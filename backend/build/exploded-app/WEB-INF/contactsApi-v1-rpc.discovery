@@ -1,0 +1,158 @@
+{
+ "kind": "discovery#rpcDescription",
+ "etag": "\"H01Z-1ikbwOw463Un2bFZHenx1g/0hi_PgGy2yquNUGcxObQah2Uhdk\"",
+ "discoveryVersion": "v1",
+ "id": "contactsApi:v1",
+ "name": "contactsApi",
+ "version": "v1",
+ "description": "This is an API",
+ "ownerDomain": "backend.myapplication.desmoline.example.com",
+ "ownerName": "backend.myapplication.desmoline.example.com",
+ "icons": {
+  "x16": "http://www.google.com/images/icons/product/search-16.gif",
+  "x32": "http://www.google.com/images/icons/product/search-32.gif"
+ },
+ "protocol": "rpc",
+ "rootUrl": "https://contactsdb-1282.appspot.com/_ah/api/",
+ "rpcUrl": "https://contactsdb-1282.appspot.com/_ah/api/rpc",
+ "rpcPath": "/_ah/api/rpc",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "Contact": {
+   "id": "Contact",
+   "type": "object",
+   "properties": {
+    "dateCreated": {
+     "type": "string"
+    },
+    "email": {
+     "type": "string"
+    },
+    "homeAddress": {
+     "type": "string"
+    },
+    "id": {
+     "type": "string",
+     "format": "int64"
+    },
+    "name": {
+     "type": "string"
+    },
+    "tel_num1": {
+     "type": "string"
+    },
+    "tel_num2": {
+     "type": "string"
+    },
+    "tel_num3": {
+     "type": "string"
+    }
+   }
+  },
+  "ContactCollection": {
+   "id": "ContactCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "Contact"
+     }
+    }
+   }
+  }
+ },
+ "methods": {
+  "contactsApi.deleteContact": {
+   "id": "contactsApi.deleteContact",
+   "parameters": {
+    "resource": {
+     "$ref": "Contact"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "contactsApi.getContacts": {
+   "id": "contactsApi.getContacts",
+   "allowGet": true,
+   "returns": {
+    "$ref": "ContactCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "contactsApi.storeContact": {
+   "id": "contactsApi.storeContact",
+   "parameters": {
+    "resource": {
+     "$ref": "Contact"
+    }
+   },
+   "parameterOrder": [
+    "resource"
+   ],
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}
